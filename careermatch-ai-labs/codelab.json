@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2025-04-04T12:45:33+11:00",
+  "id": "careermatch-ai-labs",
+  "duration": 0,
+  "title": "Discover how Google Gemini can analyze resumes, match candidates with job postings, and recommend the best career opportunities.",
+  "summary": "Discover how Google Gemini can analyze resumes, match candidates with job postings, and recommend the best career opportunities",
+  "source": "hands-on-workshop.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": null,
+  "tags": [
+    "ai",
+    "cloudrun",
+    "codelabs",
+    "googlegemini",
+    "streamlit"
+  ],
+  "url": "careermatch-ai-labs"
+}
