@@ -58,7 +58,7 @@
 <li>Sign in to <a href="https://console.cloud.google.com/" target="_blank">Google Cloud Console</a> and create a <a href="https://console.cloud.google.com/projectcreate" target="_blank">new project</a><img alt="new-project" src="img/d26b8ccb22984e05.png"></li>
 <li>Ensure you have selected the project created in step 1 if you have multiple projects. <img alt="new-project-homepage" src="img/b57d533e92fe09c9.png"></li>
 <li>Navigate to Vertex AI from your Google Cloud Console. Search and click on <code>Vertex AI</code> from the search bar to find the page, <img alt="find-vertex-ai-page" src="img/8e55664f34abc35b.png"></li>
-<li>Enable required APIs for Vertex AI <img alt="enable-apis" src="img/955e64f5babe0749.png"></li>
+<li>Enable required APIs for Vertex AI <img alt="enable-apis" src="img/234d6a08de9e2b5f.png"></li>
 <li>Then, click on <code>Create Prompt</code> found on the Main menu on the left side of the page. <img alt="create-prompt" src="img/8994291160eba020.png"></li>
 <li>This is the page where you can create a prompt and test your application logic. You can choose from different models, including Gemini 2.0, and customize the prompt to suit your needs.</li>
 </ol>
@@ -76,10 +76,19 @@ The score should be based on the following criteria:
 2. Missing skills or qualifications.
 3. Suggestions for improving the resume or get better qualifications to better match the job.
 The score should be a number between 0 and 10, where 0 means little to no match and 10 means a perfect match.
+
+Any questions irrelevant to matching the resume and job details should be replied to with - Sorry, I cannot help you with that, I am a job seeker assistant and I can only help you with matching resumes and job details.
 </code></pre>
-<p class="image-container"><img alt="system-instructions" src="img/37bcf1a0db861f62.png"></p>
+<p class="image-container"><img alt="system-instructions-1" src="img/9d91f0b63d064873.png"></p>
 <ol type="1" start="2">
-<li>Enter the job details and sample resume in the prompt section,</li>
+<li>On the right hand side panel, click on <code>Advanced</code> which will reveal 3 advanced prompt settings you can configure to enhance the performance of the model:<ul>
+<li><strong>Temperature</strong>: This setting controls the randomness of the model&#39;s output. A higher temperature value (e.g., 0.8) will make the output more creative and diverse, while a lower value (e.g., 0.2) will make it more focused and deterministic. <code>Set the value to 0 for a more deterministic output.</code></li>
+<li><strong>Output Token Limit</strong>: This setting controls the maximum number of tokens (words) the model can generate in its response. <code>Set this value to 4096 to allow for longer responses.</code></li>
+<li><strong>Top P</strong>: This setting controls the diversity of the model&#39;s output by sampling from the top P percentage of the probability distribution. A higher value (e.g., 0.9) allows for more diverse outputs, while a lower value (e.g., 0.5) makes the output more focused on the most likely words. <code>Set this value to 0 for a more focused output.</code><img alt="system-instructions" src="img/5a5b0413272da45d.png"></li>
+</ul>
+</li>
+<li><strong>Safety Filters</strong>: Gemini 2.0 has safety filters to prevent the generation of harmful content. You can enable or disable these filters based on your requirements. By default, these filters are disabled. <img alt="safety-filters" src="img/ca027f1c0348eb32.png"></li>
+<li>Its time to provide Gemini with a prompt. Enter the job details and sample resume in the prompt section,</li>
 </ol>
 <pre><code language="language-markdown" class="language-markdown">JOB DETAILS:
 
@@ -154,9 +163,9 @@ Nepal College of Information Technology - Pokhara University
 - **Languages:** Nepali, English (IELTS 7 overall)
 - **Volunteering:** Nepal Open Source Klub member - organized community events, taught Linux tools
 </code></pre>
-<ol type="1" start="4">
+<ol type="1" start="5">
 <li>Click on <code>Submit</code> to get the response from Gemini 2.0. <img alt="submit" src="img/4151f5e83aea9b4a.png"></li>
-<li>The response will include the score, key skills that match, missing skills or qualifications, and suggestions for improving the resume. <img alt="gemini-response" src="img/7c03995ff814cf20.png"></li>
+<li>The response will include the score, key skills that match, missing skills or qualifications, and suggestions for improving the resume. We can see that the resume is not a good match for the job posting. The application provides a 2/10 score, indicating that the resume does not align well with the job requirements. <img alt="gemini-response" src="img/7c03995ff814cf20.png"></li>
 </ol>
 
 
@@ -167,62 +176,90 @@ Nepal College of Information Technology - Pokhara University
 <li>Click on the <code>Save</code> button to save the prompt for future use. <img alt="save-prompt" src="img/f5242d16be185b9.png"></li>
 <li>Enter a name for the prompt like <code>Resume Match Score and Improvement Suggestions</code> and click on <code>Save</code>. <img alt="save-prompt-name" src="img/79bc58d928bbb140.png"></li>
 <li>All saved prompts will be accessible via <a href="https://console.cloud.google.com/vertex-ai/studio/saved-prompts?hl=en-AU" target="_blank">Prompt Management Page</a><img alt="prompt-management" src="img/1cc1fc9e62bc091b.png"></li>
-<li>Hurray! we have successfully created a prompt using Google Gemini 2.0 to analyze resumes and job details, providing a score and suggestions for improvement.</li>
-<li>We will now explore different ways to enhance the performance of the model by fine-tuning the prompt. Click on the saved prompt to edit it. <img alt="edit-prompt" src="img/ddab47681be5147e.png"></li>
+<li>Hurray! we have successfully created and saved a prompt using Google Gemini 2.0 to analyze resumes and job details, providing a score and suggestions for improvement. <img alt="edit-prompt" src="img/ddab47681be5147e.png"></li>
 </ol>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Fine-tuning the prompt" duration="0">
-        <p>Next, we will fine-tune the prompt to improve the results. There are 3 advanced prompt settings you can configure to enhance the performance of the model. These settings are:</p>
-<ul>
-<li><strong>Temperature</strong>: This setting controls the randomness of the model&#39;s output. A higher temperature value (e.g., 0.8) will make the output more creative and diverse, while a lower value (e.g., 0.2) will make it more focused and deterministic.</li>
-<li><strong>Output Token Limit</strong>: This setting controls the maximum number of tokens (words) the model can generate in its response. A higher limit allows for longer responses, while a lower limit restricts the output length.</li>
-<li><strong>Top P</strong>: This setting controls the diversity of the model&#39;s output by sampling from the top P percentage of the probability distribution. A higher value (e.g., 0.9) allows for more diverse outputs, while a lower value (e.g., 0.5) makes the output more focused on the most likely words.</li>
-</ul>
-<p class="image-container"><img alt="advanced-prompting" src="img/561174431e3c6c5c.png"></p>
-<p>Ensure safety filters are enabled to avoid any harmful content in the response. These settings are disabled by default. <img alt="safety-filters" src="img/97ac2d6768a4f5d7.png"></p>
-<p>You can also refine the prompt text to improve its effectiveness. Adjust it to be more flexible or specific based on your goals.</p>
-
-
-      </google-codelab-step>
-    
-      <google-codelab-step label="Run the generate code" duration="0">
-        <p>When we add a prompt to Vertex AI, it automatically generates a code snippet that can be used to call the model programmatically. This code can be run in a Python environment, such as Cloud Shell environment, Jupyter Notebook or Google Colab.</p>
+      <google-codelab-step label="One click deployment of the prompt as a web application to Google Cloud Run" duration="0">
+        <p>When we add a prompt to Vertex AI, it automatically generates a code snippet that can be used to call the model programmatically. We can also deploy the prompt as a web application directly from within Vertex AI.</p>
 <ol type="1">
-<li>Click on the <code>Get Code</code> button to get the code snippet. We&#39;ll close this section for now and return to it later to retrieve the code snippet for calling the model. <img alt="get-code" src="img/7ba87995c41de81d.png"><img alt="code" src="img/821c475728525411.png"></li>
-<li>Click <code>Activate Cloud Shell</code> toward the top right corner of the cloud console to open the Cloud Shell environment and editor so we can run the code snippet. You may need to also authorize Cloud Shell to access your Google Cloud resources. <img alt="activate-cloud-shell" src="img/d57dd1d07c6e1979.png"><img alt="authorize-cloud-shell" src="img/fea509057f1b5aa6.png"></li>
-<li>Click on <code>Open Editor</code> to open the Cloud Shell editor. <img alt="open-editor" src="img/ce6e78ee61ebb232.png"></li>
-<li>In the Cloud Shell editor menu at the top, click on <code>Terminal</code> and select <code>New Terminal</code> to open a new terminal window in the editor. <img alt="new-terminal" src="img/17078c2809a5ccd1.png"></li>
-<li>In the terminal, run the command below to install the <code>google-genai</code> library, which is necessary for interacting with Vertex AI,</li>
+<li>Click on the <code>Get Code</code> button to get the code snippet. This code can be run in a Python environment, such as Cloud Shell environment, Jupyter Notebook or Google Colab. <img alt="get-code" src="img/7ba87995c41de81d.png"><img alt="code" src="img/821c475728525411.png"></li>
+<li>Vertex AI uses <a href="https://gradio.app/" target="_blank">gradio</a> to create a web application for the prompt and deploy it to Google Cloud Run. Click on <code>Deploy as app</code> to deploy the application to Google Cloud Run. <img alt="deploy-to-cloud-run" src="img/2f7bec1b56af70f7.png"></li>
+<li>Click on <code>Enable required APIs</code> to enable the necessary APIs for deploying the application. <img alt="enable-apis" src="img/234d6a08de9e2b5f.png"></li>
+<li>Acknowledge the terms that the application will be deployed publicly and click on <code>Create app</code>. It may take a minute or two to create the app. <img alt="create-app" src="img/abf9c17c1f589de1.png"><img alt="waiting-for-app" src="img/4ff0f8af17f9f627.png"></li>
+<li>Once ready, click on the <code>Open app</code> button to open the application in a new tab. <img alt="open-app" src="img/c4ce0fcb34474e75.png"><img alt="app" src="img/2e1e591e5fe3e0b0.png"></li>
+<li>Lets ask Gemini to share insights on its previous analysis to see if it still has context.</li>
 </ol>
-<pre><code language="language-bash" class="language-bash">pip3 install --upgrade google-genai
+<pre><code language="language-markdown" class="language-markdown">Share your insight on previous analysis of the provided resume and job description
 </code></pre>
-<p class="image-container"><img alt="install-genai" src="img/6e10c7ff07993703.png"></p>
-<ol type="1" start="6">
-<li>From the left panel, click on the file <code>+</code> icon to create a new file. Name the file <code>careermatch-ai.py</code> or something relevant <img alt="new-file" src="img/8e668b8e9dbc69e6.png"></li>
-<li>Copy the code snippet from the <code>Get Code</code> section in Vertex AI Prompt page and paste it into the newly created file. This code snippet will call the model and provide the resume analysis and job matching functionality. <img alt="code-snippet" src="img/6e4d13e6d7c4aed9.png"><img alt="code-in-new-file" src="img/1240728af770db8.png"></li>
-<li>Save the file and run the code in the terminal using the following command:</li>
+<p class="image-container"><img alt="app-insight" src="img/29c5839599c971e6.png"></p>
+<ol type="1" start="7">
+<li>Great, now we will provide a new job description and see how well the resume matches the new job description.</li>
 </ol>
-<pre><code language="language-bash" class="language-bash">python3 careermatch-ai.py
+<pre><code language="language-markdown" class="language-markdown">Given the resume provided earlier , please analyze the following job description and share your insights on how well the resume matches the new job description.
+
+JOB DETAILS:
+
+Job Description: WordPress Developer - InnovaWeb Solutions
+
+Location: Remote (with occasional travel to Sydney, Australia headquarters)
+
+About InnovaWeb Solutions:
+InnovaWeb Solutions is a rapidly growing digital agency specializing in crafting innovative, high-performance websites and web applications. We empower businesses of all sizes with cutting-edge digital solutions, focusing on user-centric design, robust functionality, and measurable results.
+
+Position Details:
+- Full-time WordPress Developer
+- Technical leadership role for all WordPress projects
+- Architecture, development, implementation and maintenance responsibilities
+
+Key Responsibilities:
+- Design scalable WordPress solutions following best practices
+- Custom theme/plugin development and integrations
+- Conduct code reviews and maintain quality standards
+- Collaborate with clients on requirements
+- Stay current with WordPress technologies
+
+Required Skills:
+- 2+ years full stack web development experience
+- Knowledge in PHP, HTML, CSS, JavaScript, MySQL
+- Wordpress development
+- Git version control
+- Performance optimization expertise
+- Strong communication and problem-solving skills
+
+Preferred Skills:
+- Building e-commerce portals via WooCommerce
+- Agile methodologies
+- Front-end frameworks (React, Vue.js)
+- UI/UX design principles
+
+Benefits:
+- Competitive salary
+- Remote work flexibility
+- Professional development opportunities
+- Collaborative environment
+- Diverse project portfolio
+- Company events and activities
+- Comprehensive benefits package
 </code></pre>
-<p class="image-container"><img alt="code-execution" src="img/e9658128aa384f66.png"></p>
-<p>Congratulations! You have successfully created a job seeker assistant using Vertex AI. The application can analyze resumes, match candidates with job postings, and recommend the best career opportunities.</p>
-<p>You can close the Cloud Shell Editor.</p>
+<p>The resume is a close match to the new job description and Gemini provides a score of 7/10. This can be attributed to the fact that the resume includes experience in WordPress development and backend engineering, which aligns well with the job requirements. The application also suggests some improvements to the resume, such as adding more details about their past experience and skills related to the job posting. <img alt="new-analysis" src="img/e637d40f20f4ef9.png"><img alt="new-analysis-1" src="img/49557dca7a8217df.png"></p>
+<p>Congratulations! You have successfully created a job seeker assistant we application using Vertex AI and Google Cloud Run. The application can analyze resumes, match candidates with job postings, and recommend the best career opportunities.</p>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Deploying the application to Google Cloud Run" duration="0">
-        <ol type="1">
+      <google-codelab-step label="[OPTIONAL] Deploy a python Job Seeker Assistant App on Cloud Run with Google Gemini &amp; Streamlit – From Scratch!" duration="0">
+        <p>In this section, we will deploy our own version of CareerMatch AI application to Google Cloud Run. The application is built using Streamlit, a popular framework for building web applications in Python. Streamlit is similar to Gradio, and they both provide a simple way to create web applications. <img alt="careermatch-ai" src="img/4b5a384d9cacd561.png"></p>
+<ol type="1">
 <li>Lets analyze the code for CareerMatch AI and deploy it to Google Cloud Run. The application is built using Streamlit, a popular framework for building web applications in Python <img alt="careermatch-ai-code" src="img/148938ba9a128eb9.png"></li>
 <li>Once the user provides the resume file/text and job details, the application uses the <code>google-genai</code> library to call the Gemini model and get the analysis and matching score. The results are then displayed on the web page.</li>
 <li>To deploy the application on Google Cloud Run, navigate to the following <a href="https://github.com/boltdynamics/careermatch-ai" target="_blank">GitHub repository</a> and click on the <code>Run on Google Cloud</code> button found in Readme, <img alt="run-on-google-cloud" src="img/bb330096ff5006b.png"></li>
 <li>This will redirect you to the Google Cloud Console, where you are required to trust the repository and authorize cloud shell <img alt="trust-repo" src="img/37987e854058af9c.png"><img alt="authorize-cloud-shell" src="img/fea509057f1b5aa6.png"></li>
 <li>A cloud shell machine will be provisioned for you, and the code will be cloned into the cloud shell environment. Select the project you created earlier and click on <code>Continue</code> to proceed. <img alt="select-project" src="img/8917fbf7196392af.png"></li>
 <li>The process will enable Cloud Run APIs on the project. Select <code>us-central1</code> for the region. <img alt="select-region" src="img/7bc7619ae9ffbf1.png"></li>
-<li>The process will build a Docker image for the application, upload it to Artifact Registry and deploy it to Google Cloud Run service. This may take a few minutes. <img alt="deploy-to-cloud-run" src="img/8732f3bf3dd3eaf2.png"></li>
+<li>The process will build a Docker image for the application, upload it to Artifact Registry and deploy it to Google Cloud Run service. This may take a few minutes. <img alt="deploy-to-cloud-run" src="img/2f7bec1b56af70f7.png"></li>
 <li>Congratulations! The application has been successfully deployed to Google Cloud Run. You can access the application using the URL provided in the terminal <img alt="application-deployed" src="img/64b833ad052dbdac.png"></li>
 <li>Lets try out the application by uploading a resume and job details. Download this <a href="https://docs.google.com/document/d/19ZxyQ4WVJzMsXTL2kL4s6Lb9-4ESfEYTldxOUQZtzdo/edit?usp=sharing" target="_blank">sample resume</a> in PDF format. <img alt="download-resume" src="img/60afc46e0b4d0d93.png"></li>
 <li>Click on <code>Browse Files</code> to upload the resume file. The resume highlights experience in Wordpress Development and Backend Engineering. Paste this job post <a href="https://www.seek.com.au/job/83083901?ref=search-standalone&type=standard&origin=jobTitle#sol=4c9d22cd936a48d098459d9d60a13dbb7a6ad80d" target="_blank">link</a> in the <code>Enter job posting URL</code> section and click on <code>Analyze</code> to get the analysis and matching score. <img alt="analyze-resume" src="img/86a594cd0f890c2b.png"></li>
