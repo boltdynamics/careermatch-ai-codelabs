@@ -35,7 +35,8 @@
 <h2 is-upgraded>Vertex AI</h2>
 <p>Vertex AI is Google Cloud&#39;s comprehensive platform designed to help developers and businesses build and deploy AI applications, especially those powered by generative AI. Access and utilize AI Studio, Agent Builder, and 160+ foundation models including Gemini 2.0 from Vertex AI. - <a href="https://cloud.google.com/vertex-ai?hl=en" target="_blank">Source</a></p>
 <h2 is-upgraded>A sneak peak into what you will be deploying to Google Cloud today</h2>
-<p>The application hosted in Google Cloud Run uses Streamlit for the front-end interface. Features include resume analysis, similarity scoring, and personalized job recommendations. <img alt="careermatch-ai-app" src="img/94147468134236cf.png"></p>
+<p>The application deployed to Google Cloud Run uses Gradio for the front end interface which handles the interaction with Vertex AI. Features include resume analysis, similarity scoring, and personalized job recommendations. <img alt="gradio" src="img/2e1e591e5fe3e0b0.png"></p>
+<p>If time permits, we will also deploy a custom version of the CareerMatch AI application using Streamlit, a popular framework for building web applications in Python. <img alt="careermatch-ai-app" src="img/94147468134236cf.png"></p>
 
 
       </google-codelab-step>
@@ -44,7 +45,6 @@
         <p>Before starting this workshop, ensure you have:</p>
 <ul>
 <li>A Google Cloud Platform account (for those who want to deploy their version) and credits will be provided, so a Google account will be enough.</li>
-<li>Basic understanding of Python and web applications</li>
 <li>Some familiarity with serverless cloud services like Google Cloud Run</li>
 <li>Interest in practical applications of generative AI</li>
 </ul>
@@ -58,7 +58,7 @@
 <li>Sign in to <a href="https://console.cloud.google.com/" target="_blank">Google Cloud Console</a> and create a <a href="https://console.cloud.google.com/projectcreate" target="_blank">new project</a><img alt="new-project" src="img/d26b8ccb22984e05.png"></li>
 <li>Ensure you have selected the project created in step 1 if you have multiple projects. <img alt="new-project-homepage" src="img/b57d533e92fe09c9.png"></li>
 <li>Navigate to Vertex AI from your Google Cloud Console. Search and click on <code>Vertex AI</code> from the search bar to find the page, <img alt="find-vertex-ai-page" src="img/8e55664f34abc35b.png"></li>
-<li>Enable required APIs for Vertex AI <img alt="enable-apis" src="img/234d6a08de9e2b5f.png"></li>
+<li>Enable required APIs for Vertex AI <img alt="enable-apis" src="img/955e64f5babe0749.png"></li>
 <li>Then, click on <code>Create Prompt</code> found on the Main menu on the left side of the page. <img alt="create-prompt" src="img/8994291160eba020.png"></li>
 <li>This is the page where you can create a prompt and test your application logic. You can choose from different models, including Gemini 2.0, and customize the prompt to suit your needs.</li>
 </ol>
@@ -176,7 +176,7 @@ Nepal College of Information Technology - Pokhara University
 <li>Click on the <code>Save</code> button to save the prompt for future use. <img alt="save-prompt" src="img/f5242d16be185b9.png"></li>
 <li>Enter a name for the prompt like <code>Resume Match Score and Improvement Suggestions</code> and click on <code>Save</code>. <img alt="save-prompt-name" src="img/79bc58d928bbb140.png"></li>
 <li>All saved prompts will be accessible via <a href="https://console.cloud.google.com/vertex-ai/studio/saved-prompts?hl=en-AU" target="_blank">Prompt Management Page</a><img alt="prompt-management" src="img/1cc1fc9e62bc091b.png"></li>
-<li>Hurray! we have successfully created and saved a prompt using Google Gemini 2.0 to analyze resumes and job details, providing a score and suggestions for improvement. <img alt="edit-prompt" src="img/ddab47681be5147e.png"></li>
+<li>Hurray! we have successfully created and saved a prompt using Vertex AI <img alt="edit-prompt" src="img/ddab47681be5147e.png"></li>
 </ol>
 
 
@@ -255,6 +255,8 @@ Benefits:
 <ol type="1">
 <li>Lets analyze the code for CareerMatch AI and deploy it to Google Cloud Run. The application is built using Streamlit, a popular framework for building web applications in Python <img alt="careermatch-ai-code" src="img/148938ba9a128eb9.png"></li>
 <li>Once the user provides the resume file/text and job details, the application uses the <code>google-genai</code> library to call the Gemini model and get the analysis and matching score. The results are then displayed on the web page.</li>
+<li>The analysis prompt is shown below, <img alt="analysis-prompt" src="img/45423840e0020079.png"></li>
+<li>If no job details are provided, the application uses the grounding feature of Gemini to suggest the best ways to find relevant job postings. The application provides a list of job boards and websites where the user can find job postings related to their skills and experience. <img alt="web-search-prompt" src="img/17536181bbc07ff4.png"></li>
 <li>To deploy the application on Google Cloud Run, navigate to the following <a href="https://github.com/boltdynamics/careermatch-ai" target="_blank">GitHub repository</a> and click on the <code>Run on Google Cloud</code> button found in Readme, <img alt="run-on-google-cloud" src="img/bb330096ff5006b.png"></li>
 <li>This will redirect you to the Google Cloud Console, where you are required to trust the repository and authorize cloud shell <img alt="trust-repo" src="img/37987e854058af9c.png"><img alt="authorize-cloud-shell" src="img/fea509057f1b5aa6.png"></li>
 <li>A cloud shell machine will be provisioned for you, and the code will be cloned into the cloud shell environment. Select the project you created earlier and click on <code>Continue</code> to proceed. <img alt="select-project" src="img/8917fbf7196392af.png"></li>

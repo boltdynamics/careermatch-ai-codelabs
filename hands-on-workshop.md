@@ -20,14 +20,17 @@ Gemini is a suite of advanced artificial intelligence models created by Google D
 Vertex AI is Google Cloud's comprehensive platform designed to help developers and businesses build and deploy AI applications, especially those powered by generative AI. Access and utilize AI Studio, Agent Builder, and 160+ foundation models including Gemini 2.0 from Vertex AI. - [Source](https://cloud.google.com/vertex-ai?hl=en)
 
 ### A sneak peak into what you will be deploying to Google Cloud today
-The application hosted in Google Cloud Run uses Streamlit for the front-end interface. Features include resume analysis, similarity scoring, and personalized job recommendations.
+
+The application deployed to Google Cloud Run uses Gradio for the front end interface which handles the interaction with Vertex AI. Features include resume analysis, similarity scoring, and personalized job recommendations.
+![gradio](images/app.png)
+
+If time permits, we will also deploy a custom version of the CareerMatch AI application using Streamlit, a popular framework for building web applications in Python.
 ![careermatch-ai-app](images/careermatch-ai.png)
 
 ## Prerequisites
 Before starting this workshop, ensure you have:
 
 - A Google Cloud Platform account (for those who want to deploy their version) and credits will be provided, so a Google account will be enough.
-- Basic understanding of Python and web applications
 - Some familiarity with serverless cloud services like Google Cloud Run
 - Interest in practical applications of generative AI
 
@@ -45,7 +48,7 @@ Note: Please be aware of the [Vertex AI Pricing](https://cloud.google.com/vertex
 ![find-vertex-ai-page](images/find-vertex-ai-page.png)
 
 4. Enable required APIs for Vertex AI
-![enable-apis](images/enable-apis.png)
+![enable-apis](images/enable-apis-vertex.png)
 
 5. Then, click on `Create Prompt` found on the Main menu on the left side of the page.
 ![create-prompt](images/create-prompt.png)
@@ -168,7 +171,7 @@ Nepal College of Information Technology - Pokhara University
 3. All saved prompts will be accessible via [Prompt Management Page](https://console.cloud.google.com/vertex-ai/studio/saved-prompts?hl=en-AU)
 ![prompt-management](images/prompt-management.png)
 
-4. Hurray! we have successfully created and saved a prompt using Google Gemini 2.0 to analyze resumes and job details, providing a score and suggestions for improvement.
+4. Hurray! we have successfully created and saved a prompt using Vertex AI
 ![edit-prompt](images/edit-prompt.png)
 
 ## One click deployment of the prompt as a web application to Google Cloud Run
@@ -264,45 +267,51 @@ In this section, we will deploy our own version of CareerMatch AI application to
 
 2. Once the user provides the resume file/text and job details, the application uses the `google-genai` library to call the Gemini model and get the analysis and matching score. The results are then displayed on the web page.
 
-3. To deploy the application on Google Cloud Run, navigate to the following [GitHub repository](https://github.com/boltdynamics/careermatch-ai) and click on the `Run on Google Cloud` button found in Readme,
+3. The analysis prompt is shown below,
+![analysis-prompt](images/analysis-prompt.png)
+
+4. If no job details are provided, the application uses the grounding feature of Gemini to suggest the best ways to find relevant job postings. The application provides a list of job boards and websites where the user can find job postings related to their skills and experience.
+![web-search-prompt](images/web-search-prompt.png)
+
+5. To deploy the application on Google Cloud Run, navigate to the following [GitHub repository](https://github.com/boltdynamics/careermatch-ai) and click on the `Run on Google Cloud` button found in Readme,
 ![run-on-google-cloud](images/run-on-google-cloud.png)
 
-4. This will redirect you to the Google Cloud Console, where you are required to trust the repository and authorize cloud shell
+6. This will redirect you to the Google Cloud Console, where you are required to trust the repository and authorize cloud shell
 ![trust-repo](images/open-in-cloud-shell.png)
 ![authorize-cloud-shell](images/authorize-cloud-shell.png)
 
-5. A cloud shell machine will be provisioned for you, and the code will be cloned into the cloud shell environment. Select the project you created earlier and click on `Continue` to proceed.
+7. A cloud shell machine will be provisioned for you, and the code will be cloned into the cloud shell environment. Select the project you created earlier and click on `Continue` to proceed.
 ![select-project](images/select-project.png)
 
-6. The process will enable Cloud Run APIs on the project. Select `us-central1` for the region.
+8. The process will enable Cloud Run APIs on the project. Select `us-central1` for the region.
 ![select-region](images/select-region.png)
 
-7. The process will build a Docker image for the application, upload it to Artifact Registry and deploy it to Google Cloud Run service. This may take a few minutes.
+9. The process will build a Docker image for the application, upload it to Artifact Registry and deploy it to Google Cloud Run service. This may take a few minutes.
 ![deploy-to-cloud-run](images/deploy-to-cloud-run.png)
 
-8. Congratulations! The application has been successfully deployed to Google Cloud Run. You can access the application using the URL provided in the terminal
+10. Congratulations! The application has been successfully deployed to Google Cloud Run. You can access the application using the URL provided in the terminal
 ![application-deployed](images/application-deployed.png)
 
-9. Lets try out the application by uploading a resume and job details. Download this [sample resume](https://docs.google.com/document/d/19ZxyQ4WVJzMsXTL2kL4s6Lb9-4ESfEYTldxOUQZtzdo/edit?usp=sharing) in PDF format.
+11. Lets try out the application by uploading a resume and job details. Download this [sample resume](https://docs.google.com/document/d/19ZxyQ4WVJzMsXTL2kL4s6Lb9-4ESfEYTldxOUQZtzdo/edit?usp=sharing) in PDF format.
 ![download-resume](images/download-resume.png)
 
-10. Click on `Browse Files` to upload the resume file. The resume highlights experience in Wordpress Development and Backend Engineering. Paste this job post [link](https://www.seek.com.au/job/83083901?ref=search-standalone&type=standard&origin=jobTitle#sol=4c9d22cd936a48d098459d9d60a13dbb7a6ad80d) in the `Enter job posting URL` section and click on `Analyze` to get the analysis and matching score.
+12. Click on `Browse Files` to upload the resume file. The resume highlights experience in Wordpress Development and Backend Engineering. Paste this job post [link](https://www.seek.com.au/job/83083901?ref=search-standalone&type=standard&origin=jobTitle#sol=4c9d22cd936a48d098459d9d60a13dbb7a6ad80d) in the `Enter job posting URL` section and click on `Analyze` to get the analysis and matching score.
 ![analyze-resume](images/analyze-resume.png)
 
-11. We can see that the resume matches the job posting for Wordpress Specialist at Sj Personnel. The application provides a 75% match score, indicating that the resume aligns well with the job requirements. It also suggests some improvements to the resume, such as adding more details about their past experience and skills related to the job posting.
+13. We can see that the resume matches the job posting for Wordpress Specialist at Sj Personnel. The application provides a 75% match score, indicating that the resume aligns well with the job requirements. It also suggests some improvements to the resume, such as adding more details about their past experience and skills related to the job posting.
 ![analyze-resume-result](images/analyze-resume-result.png)
 
-12. Now lets try out a different job posting that is very different from the resume. Paste this job post [link](https://www.seek.com.au/job/82809251?ref=search-standalone&type=promoted&origin=jobTitle#sol=2b9aceb19b46620aeafdc3f45f8aa72596440966) in the `Enter job posting URL` section and click on `Analyze` to get the analysis and matching score.
+14. Now lets try out a different job posting that is very different from the resume. Paste this job post [link](https://www.seek.com.au/job/82809251?ref=search-standalone&type=promoted&origin=jobTitle#sol=2b9aceb19b46620aeafdc3f45f8aa72596440966) in the `Enter job posting URL` section and click on `Analyze` to get the analysis and matching score.
 
-13. We can see that the resume does not match the job posting for a Drone Operator. Software engineering and drone operation are two very different fields and as a result, the application provides a 25% match score, indicating that the resume does not align well with the job requirements.
+15. We can see that the resume does not match the job posting for a Drone Operator. Software engineering and drone operation are two very different fields and as a result, the application provides a 25% match score, indicating that the resume does not align well with the job requirements.
 ![analyze-resume-result-2](images/analyze-resume-result-2.png)
 
-14. You can also leave the job posting URL section empty and click on `Analyze` to get the analysis on a broad level. Gemini uses grounding feature to leverage Google search and suggest best ways to find relevant job postings. The application provides a list of job boards and websites where the user can find job postings related to their skills and experience.
+16. You can also leave the job posting URL section empty and click on `Analyze` to get the analysis on a broad level. Gemini uses grounding feature to leverage Google search and suggest best ways to find relevant job postings. The application provides a list of job boards and websites where the user can find job postings related to their skills and experience.
 ![analyze-resume-result-3](images/analyze-resume-result-3.png)
 ![analyze-resume-result-4](images/analyze-resume-result-4.png)
 ![analyze-resume-result-5](images/analyze-resume-result-5.png)
 
-15. You can also try out different job postings and resumes to see how well the application performs.
+17. You can also try out different job postings and resumes to see how well the application performs.
 
 Congratulations! You have successfully deployed a job seeker assistant application using Google Gemini and Streamlit on Google Cloud Run. The application can analyze resumes, match candidates with job postings, and recommend the best career opportunities.
 
