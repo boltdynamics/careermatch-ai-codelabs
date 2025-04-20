@@ -174,7 +174,7 @@ Nepal College of Information Technology - Pokhara University
       <google-codelab-step label="Save the prompt" duration="0">
         <ol type="1">
 <li>Click on the <code>Save</code> button to save the prompt for future use. <img alt="save-prompt" src="img/f5242d16be185b9.png"></li>
-<li>Enter a name for the prompt like <code>Resume Match Score and Improvement Suggestions</code> and click on <code>Save</code>. <img alt="save-prompt-name" src="img/79bc58d928bbb140.png"></li>
+<li>Enter a name for the prompt like <code>Resume Match Score and Improvement Suggestions</code> and click on <code>Save</code>. It might take a few seconds to save the prompt. You may also need to retry saving the prompt if you get an error as these are usually intermittent and can be resolved by retrying. <img alt="save-prompt-name" src="img/79bc58d928bbb140.png"></li>
 <li>All saved prompts will be accessible via <a href="https://console.cloud.google.com/vertex-ai/studio/saved-prompts?hl=en-AU" target="_blank">Prompt Management Page</a><img alt="prompt-management" src="img/1cc1fc9e62bc091b.png"></li>
 <li>Hurray! we have successfully created and saved a prompt using Vertex AI <img alt="edit-prompt" src="img/ddab47681be5147e.png"></li>
 </ol>
@@ -260,6 +260,12 @@ Benefits:
 <li>To deploy the application on Google Cloud Run, navigate to the following <a href="https://github.com/boltdynamics/careermatch-ai" target="_blank">GitHub repository</a> and click on the <code>Run on Google Cloud</code> button found in Readme, <img alt="run-on-google-cloud" src="img/bb330096ff5006b.png"></li>
 <li>This will redirect you to the Google Cloud Console, where you are required to trust the repository and authorize cloud shell <img alt="trust-repo" src="img/37987e854058af9c.png"><img alt="authorize-cloud-shell" src="img/fea509057f1b5aa6.png"></li>
 <li>A cloud shell machine will be provisioned for you, and the code will be cloned into the cloud shell environment. Select the project you created earlier and click on <code>Continue</code> to proceed. <img alt="select-project" src="img/8917fbf7196392af.png"></li>
+<li>If you get a <code>Quota exhausted</code> error, please retry the deployment process by running the following command in the cloud shell terminal,</li>
+</ol>
+<pre><code language="language-bash" class="language-bash">rm -rf careermatch-ai &amp;&amp; cloudshell_open --repo_url &#34;https://github.com/boltdynamics/careermatch-ai.git&#34; --git_branch &#34;main&#34; --page &#34;shell&#34; --force_new_clone
+</code></pre>
+<p class="image-container"><img alt="quota-exhausted" src="img/1e43d23d67a4c366.png"></p>
+<ol type="1" start="9">
 <li>The process will enable Cloud Run APIs on the project. Select <code>us-central1</code> for the region. <img alt="select-region" src="img/7bc7619ae9ffbf1.png"></li>
 <li>The process will build a Docker image for the application, upload it to Artifact Registry and deploy it to Google Cloud Run service. This may take a few minutes. <img alt="deploy-to-cloud-run" src="img/2f7bec1b56af70f7.png"></li>
 <li>Congratulations! The application has been successfully deployed to Google Cloud Run. You can access the application using the URL provided in the terminal <img alt="application-deployed" src="img/64b833ad052dbdac.png"></li>
