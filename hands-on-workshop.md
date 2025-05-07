@@ -196,13 +196,16 @@ When we add a prompt to Vertex AI, it automatically generates a code snippet tha
 ![open-app](images/open-app.png)
 ![app](images/app.png)
 
-6. Lets ask Gemini to share insights on its previous analysis to see if it still has context.
+6. You can also find the `Open app` button when you click on `Build with code`,
+![open-app-1](images/open-app-1.png)
+
+7. Lets ask Gemini to share insights on its previous analysis to see if it still has context.
 ```markdown
 Share your insight on previous analysis of the provided resume and job description
 ```
 ![app-insight](images/app-insight.png)
 
-7. Great, now we will provide a new job description and see how well the resume matches the new job description.
+8. Great, now we will provide a new job description and see how well the resume matches the new job description.
 ```markdown
 Given the resume provided earlier , please analyze the following job description and share your insights on how well the resume matches the new job description.
 
@@ -301,23 +304,26 @@ rm -rf careermatch-ai && cloudshell_open --repo_url "https://github.com/boltdyna
 12. Lets try out the application by uploading a resume and job details. Download this [sample resume](https://docs.google.com/document/d/19ZxyQ4WVJzMsXTL2kL4s6Lb9-4ESfEYTldxOUQZtzdo/edit?usp=sharing) in PDF format.
 ![download-resume](images/download-resume.png)
 
-13. Click on `Browse Files` to upload the resume file. The resume highlights experience in Wordpress Development and Backend Engineering. Paste this job post [link](https://www.seek.com.au/job/83083901?ref=search-standalone&type=standard&origin=jobTitle#sol=4c9d22cd936a48d098459d9d60a13dbb7a6ad80d) in the `Enter job posting URL` section and click on `Analyze` to get the analysis and matching score.
+13. Click on `Browse Files` to upload the resume file. The resume highlights experience in Wordpress Development and Backend Engineering. Paste this job post [link](https://www.seek.com.au/job/83736354?ref=search-standalone&type=standard&origin=jobTitle#sol=cca3022d42ab285717bfb8ad10df98e853094919) in the `Enter job posting URL` section and click on `Analyze` to get the analysis and matching score.
 ![analyze-resume](images/analyze-resume.png)
 
-14. We can see that the resume matches the job posting for Wordpress Specialist at Sj Personnel. The application provides a 75% match score, indicating that the resume aligns well with the job requirements. It also suggests some improvements to the resume, such as adding more details about their past experience and skills related to the job posting.
+14. We can see that the resume matches the job posting for Wordpress Specialist at Cadence Connect. The application provides a 75% match score, indicating that the resume aligns well with the job requirements. It also suggests some improvements to the resume, such as adding more details about their past experience and skills related to the job posting.
 ![analyze-resume-result](images/analyze-resume-result.png)
 
-15. Now lets try out a different job posting that is very different from the resume. Paste this job post [link](https://www.seek.com.au/job/82809251?ref=search-standalone&type=promoted&origin=jobTitle#sol=2b9aceb19b46620aeafdc3f45f8aa72596440966) in the `Enter job posting URL` section and click on `Analyze` to get the analysis and matching score.
+15. If the match is above 50%, the application will automatically generate a cover letter for the job posting. You can download the cover letter by clicking on the `Download Cover Letter` button.
+![cover-letter](images/cover-letter.png)
 
-16. We can see that the resume does not match the job posting for a Drone Operator. Software engineering and drone operation are two very different fields and as a result, the application provides a 25% match score, indicating that the resume does not align well with the job requirements.
+16. Now lets try out a different job posting that is very different from the resume. Paste this job post [link](https://www.seek.com.au/job/83935106?type=promoted&ref=search-standalone&origin=cardTitle#sol=f7c09fd162dcf3880d9cb375e7b4bd42b896e1bb) in the `Enter job posting URL` section and click on `Analyze` to get the analysis and matching score.
+
+17. We can see that the resume does not match the job posting for a Electronic Warfare Operator. Software engineering and Military Warfare are two very different careers and as a result, the application provides a 5% match score, indicating that the resume does not align well with the job requirements.
 ![analyze-resume-result-2](images/analyze-resume-result-2.png)
 
-17. You can also leave the job posting URL section empty and click on `Analyze` to get the analysis on a broad level. Gemini uses grounding feature to leverage Google search and suggest best ways to find relevant job postings. The application provides a list of job boards and websites where the user can find job postings related to their skills and experience.
+18. You can also leave the job posting URL section empty and click on `Analyze` to get the analysis on a broad level. Gemini uses grounding feature to leverage Google search and suggest best ways to find relevant job postings. The application provides a list of job boards and websites where the user can find job postings related to their skills and experience.
 ![analyze-resume-result-3](images/analyze-resume-result-3.png)
 ![analyze-resume-result-4](images/analyze-resume-result-4.png)
 ![analyze-resume-result-5](images/analyze-resume-result-5.png)
 
-18. You can also try out different job postings and resumes to see how well the application performs.
+19. You can also try out different job postings and resumes to see how well the application performs.
 
 Congratulations! You have successfully deployed a job seeker assistant application using Google Gemini and Streamlit on Google Cloud Run. The application can analyze resumes, match candidates with job postings, and recommend the best career opportunities.
 
