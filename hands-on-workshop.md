@@ -306,6 +306,7 @@ rm -rf careermatch-ai && cloudshell_open --repo_url "https://github.com/boltdyna
 
 13. Click on `Browse Files` to upload the resume file. The resume highlights experience in Wordpress Development and Backend Engineering. Paste this job post [link](https://www.seek.com.au/job/83736354?ref=search-standalone&type=standard&origin=jobTitle#sol=cca3022d42ab285717bfb8ad10df98e853094919) in the `Enter job posting URL` section and click on `Analyze` to get the analysis and matching score.
 ![analyze-resume](images/analyze-resume.png)
+    > Note: The Seek job posting link may expire and no longer be available. You can google search for a job post that is relevant to the resume provided and paste the link in the `Enter job posting URL` section.
 
 14. We can see that the resume matches the job posting for Wordpress Specialist at Cadence Connect. The application provides a 75% match score, indicating that the resume aligns well with the job requirements. It also suggests some improvements to the resume, such as adding more details about their past experience and skills related to the job posting.
 ![analyze-resume-result](images/analyze-resume-result.png)
@@ -314,6 +315,7 @@ rm -rf careermatch-ai && cloudshell_open --repo_url "https://github.com/boltdyna
 ![cover-letter](images/cover-letter.png)
 
 16. Now lets try out a different job posting that is very different from the resume. Paste this job post [link](https://www.seek.com.au/job/83935106?type=promoted&ref=search-standalone&origin=cardTitle#sol=f7c09fd162dcf3880d9cb375e7b4bd42b896e1bb) in the `Enter job posting URL` section and click on `Analyze` to get the analysis and matching score.
+    > Note: The Seek job posting link may expire and no longer be available. You can google search for a job post that is relevant to the resume provided and paste the link in the `Enter job posting URL` section.
 
 17. We can see that the resume does not match the job posting for a Electronic Warfare Operator. Software engineering and Military Warfare are two very different careers and as a result, the application provides a 5% match score, indicating that the resume does not align well with the job requirements.
 ![analyze-resume-result-2](images/analyze-resume-result-2.png)
