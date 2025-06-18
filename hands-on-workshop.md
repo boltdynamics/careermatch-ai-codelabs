@@ -314,8 +314,9 @@ rm -rf careermatch-ai && cloudshell_open --repo_url "https://github.com/boltdyna
 15. If the match is above 50%, the application will automatically generate a cover letter for the job posting. You can download the cover letter by clicking on the `Download Cover Letter` button.
 ![cover-letter](images/cover-letter.png)
 
-16. Now lets try out a different job posting that is very different from the resume. Paste this job post [link](https://www.seek.com.au/job/83935106?type=promoted&ref=search-standalone&origin=cardTitle#sol=f7c09fd162dcf3880d9cb375e7b4bd42b896e1bb) in the `Enter job posting URL` section and click on `Analyze` to get the analysis and matching score.
-    > Note: The Seek job posting link may expire and no longer be available. You can google search for a job post that is relevant to the resume provided and paste the link in the `Enter job posting URL` section.
+16. Now lets try out a different job posting that is very different from the resume. Paste this job post [link](https://www.seek.com.au/job/83935106?type=promoted&ref=search-standalone&origin=cardTitle#sol=f7c09fd162dcf3880d9cb375e7b4bd42b896e1bb) in the `Enter job posting URL` section and click on `Analyze` to get the analysis and matching score
+
+Note: The Seek job posting link may expire and no longer be available. You can google search for a job post that does not match the resume provided and paste the link in the `Enter job posting URL` section. This is so we can see how the application performs when the resume does not match the job posting.
 
 17. We can see that the resume does not match the job posting for a Electronic Warfare Operator. Software engineering and Military Warfare are two very different careers and as a result, the application provides a 5% match score, indicating that the resume does not align well with the job requirements.
 ![analyze-resume-result-2](images/analyze-resume-result-2.png)
